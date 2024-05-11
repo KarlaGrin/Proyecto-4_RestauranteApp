@@ -9,8 +9,8 @@ import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode> {/* borrar strictMode para lanzar a produccion */}
-  <BrowserRouter> 
-    <App />
-    </BrowserRouter> 
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>,
 )

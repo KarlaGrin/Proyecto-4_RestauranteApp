@@ -1,9 +1,9 @@
-import { Header } from "./components/Header.jsx"
+import { RouterApp } from "./router/RouterApp.jsx"
 
-export  const App = () => {
+export const App = () => {
   return (
     <>
-    <Header />
+      <RouterApp/>
     </>
   )
 
