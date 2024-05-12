@@ -1,5 +1,11 @@
 import { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Modal } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from '../../src/config/firebase.config'
+
+
 
 export const FormularioReserva = () => {
     // Estado para almacenar los detalles de la reserva
@@ -13,18 +19,45 @@ export const FormularioReserva = () => {
 
     });
 
-    // Manejador de cambios para los campos del formulario
+    /*  const [showSuccessAlert, setShowSuccessAlert] = useState(false); */
+    const [showModal, setShowModal] = useState(false);
+
+        const navigate = useNavigate(); 
+
+
+    // Maneja cambios para los datos del formulario
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setReservationData({ ...reservationData, [name]: value });
     };
 
-    // Manejador de envío del formulario
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        // Aquí puedes enviar los datos de la reserva a Firestore u otro servicio para su procesamiento
-        console.log('Datos de la reserva:', reservationData);
+
+
+    // Manejador de envío de Reserva
+    const handleSubmit = async (event) => {
+        event.preventDefault()
+        try {
+            // Agrega un nuevo documento a la colección 'reservas' en Firestore
+            await addDoc(collection(db, 'reservas'), reservationData);
+            setShowModal(true);
+            setReservationData({
+                date: '',
+                time: '',
+                partySize: 1,
+                name: '',
+                phone: '',
+                email: '',
+            });
+
+        } catch (error) {
+            console.error('Error al agregar el documento: ', error);
+        }
+    }
+
+    const handleGoHomePages = () => {
+        navigate('/');
     };
+
 
     return (
         <div className="container">
@@ -61,12 +94,12 @@ export const FormularioReserva = () => {
                         required
                     />
                 </Form.Group>
-                <Form.Group controlId="Name">
+                <Form.Group controlId="name">
                     <Form.Label>Nombre Completo:</Form.Label>
                     <Form.Control
                         type="text"
-                        name="Name"
-                        value={reservationData.Name}
+                        name="name"
+                        value={reservationData.name}
                         onChange={handleInputChange}
                         required
                     />
@@ -96,6 +129,34 @@ export const FormularioReserva = () => {
                     Reservar Mesa
                 </Button>
             </Form>
+
+            <Modal show={showModal} onHide={() => setShowModal(false)}>
+                <Modal.Header closeButton>
+                    <Modal.Title>¡Reserva enviada correctamente!</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    ¡Nuestro staff la revisará a la brevedad, recibirás la confirmación en tu correo!
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="primary" onClick={handleGoHomePages}>
+                        Ir al Home
+                    </Button>
+                    <Button variant="secondary" onClick={() => setShowModal(false)}>
+                        Cerrar
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+
+            {/*             {showSuccessAlert && (
+                <Alert variant="success" onClose={() => setShowSuccessAlert(false)} dismissible>
+                    ¡La reserva se ha enviado correctamente, recibirás la confirmación en tu correo!
+                </Alert>
+            )} */}
+
+
+
+
+
         </div>
     );
 };
