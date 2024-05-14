@@ -1,6 +1,7 @@
 import { Header } from "../components/Header"
-import { Navbar } from "../components/Navbar"
+import { BarraNav } from "../components/BarraNav"
 import { Footer } from "../components/Footer"
+import { Contenido } from "../components/Contenido"
 
 
 export const HomePages = () => {
@@ -10,11 +11,12 @@ export const HomePages = () => {
     return (
         <>
         <Header/>
-        <Navbar/>
+        <BarraNav/>
+        <Contenido/>
 
 
         <Footer/>
-        <h1>Esta es la homepage</h1>
+    
 
 
 
