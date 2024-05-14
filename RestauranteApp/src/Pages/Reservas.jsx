@@ -1,6 +1,7 @@
 import { Header } from "../components/Header"
 import { BarraNav } from "../components/BarraNav"
 import { FormularioReserva } from "../components/FormularioReserva"
+import { Footer } from "../components/Footer"
 
 export const Reservas = () => {
     return (
@@ -8,12 +9,7 @@ export const Reservas = () => {
         <Header/>
         <BarraNav/>
         <FormularioReserva/>
-
-        <h1>aqui va el formulario de reservas</h1>
-        
-
-
-
+        <Footer/>
 
         </>
     )

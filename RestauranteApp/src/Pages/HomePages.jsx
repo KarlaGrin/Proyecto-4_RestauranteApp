@@ -13,14 +13,7 @@ export const HomePages = () => {
         <Header/>
         <BarraNav/>
         <Contenido/>
-
-
         <Footer/>
-    
-
-
-
-
         </>
     )
 }
