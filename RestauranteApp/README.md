@@ -1,8 +1,21 @@
-# React + Vite
+<h1>Restaurant App<br>
+Desarrollado por Karla Griñen</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Esta página de aterrizaje ficticia ha sido creada con propósitos académicos en el marco del Bootcamp Full Stack de la Universidad del Desarrollo.
+El proyecto web que he ideado se denomina 'Restaurante App'.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<b>Despliegue</b>
+<a href="https://restauranteapp.netlify.app">Restaurante App Website</a>
+
+
+
+<b>Tecnologías utilizadas</b>
+
+- React (Vite) V18.2.0
+- React-Bootstrap V2.10.2
+- Firebase V10.11.1
+
+
+
+
